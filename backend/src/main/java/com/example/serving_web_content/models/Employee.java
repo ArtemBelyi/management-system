@@ -1,47 +1,108 @@
 package com.example.serving_web_content.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
-import java.time.LocalDate;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "employees")
-public class Employee {
+public class Employee implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "id")
+    private Integer id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "contact_number")
+    private String number;
 
-    @Column(name = "date_birth")
-    private LocalDate dateOfBirth;
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "role")
+    private String role;
 
     public Employee() {}
 
-    public Employee(String firstName, String lastName, LocalDate dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+    public Employee(String name, String number, String email, String password, String status, String role) {
+        this.name = name;
+        this.number = number;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.role = role;
     }
 
-    public Long getId() {
-        return this.id;
+    public Integer getId() {
+        return id;
     }
 
-    public String getFirstName() {
-        return this.firstName;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getLastName() {
-        return this.lastName;
+    public String getName() {
+        return name;
     }
 
-    public LocalDate getDateOfBirth() {
-        return this.dateOfBirth;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
