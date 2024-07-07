@@ -7,6 +7,8 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.io.Serial;
 import java.io.Serializable;
 
+@NamedQuery(name = "Employee.findByEmailId", query = "select u from Employee u where u.email=:email")
+
 @Entity
 @DynamicUpdate
 @DynamicInsert
